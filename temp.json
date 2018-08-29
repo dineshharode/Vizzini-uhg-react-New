@@ -1,0 +1,46 @@
+{
+  "DB": [
+    {
+      "name": "ANOC_2016",
+      "tables": [
+        "ANOC_Contact",
+        "ANOC_CoverAndBackCoverText",
+        "ANOC_HoursOfOperation",
+        "ANOC_Logo",
+        "ANOC_TemplatesAndLogo",
+        "ANOC_TOC_ComponentCode",
+        "ANOC_TOC_Language",
+        "ANOC_Versions",
+        "ANOCTemplates"
+      ]
+    },
+    {
+      "name": "DBB_2015",
+      "tables": [
+        "DBB_Plans",
+        "DBB_Tabs",
+        "DBBMasterGrid",
+        "DocumentTemplates",
+        "TOC_Background",
+        "TOCHeaders"
+      ],
+      "teamQueries": [
+        "12976 Plans",
+        "CIP-Double Ben Hi",
+        "Group PDP Oct 21",
+        "GRP Plans with Custom Intros",
+        "MasterGrid PDP Fixes",
+        "PDP orders Ordered by last update",
+        "PDP_Group with component UHB",
+        "Plans with missing kit code",
+        "Select plans with component"
+      ]
+    },
+    {
+      "name": "Med_supp 2015",
+      "tables": [
+        "MedSupp_Versions"
+      ]
+    }
+  ]
+}

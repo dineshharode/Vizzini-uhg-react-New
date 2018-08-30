@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { Menu, Dropdown } from 'semantic-ui-react';
 import Axios from 'axios';
 import GridView from '../components/grid';
+import {BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import LOBDetails from '../pages/lobDetailsPage';
 
 export default class SideBar extends Component {
    
@@ -13,7 +15,7 @@ export default class SideBar extends Component {
             showTable:false,
             selectedDB:'',
             selectedTable:'',
-            prevSelectedTable:''
+            tableData:{}
         };
     }
 
@@ -30,10 +32,10 @@ export default class SideBar extends Component {
     }
 
     onDBClick = (db, table) => {
+        console.log('On Click');
+        
         this.setState((prevState)=>{
-            return {selectedDB:db,selectedTable:table,showTable:true,prevSelectedTable:prevState.selectedTable}
-        }, () => {
-            console.log(`SB-DB : ${this.state.selectedDB}, Table: ${this.state.selectedTable}, Prev: ${this.state.prevSelectedTable}`)
+            return {selectedDB:db,selectedTable:table,showTable:true}
         });
     }
 
@@ -47,7 +49,8 @@ export default class SideBar extends Component {
                 let queriesDDL = null;
                 if(db["tables"].length > 0){
                     const tables = db["tables"].map(table => {
-                        return <Dropdown.Item key={table} onClick={() => this.onDBClick(db["name"],table)}>{table}</Dropdown.Item>
+                        // return <Dropdown.Item key={table} onClick={() => this.onDBClick(db["name"],table)}>{table}</Dropdown.Item>
+                        return <Dropdown.Item key={table} ><Link to={`/grid/${db['name']}/${table}`}>{table}</Link></Dropdown.Item>
                     });
                     const tableStr = `Tables (${db["tables"].length})`;
                     let keyName=`${db["name"]}table}`
@@ -92,21 +95,35 @@ export default class SideBar extends Component {
     }
 
     setShowTable = () => {
-        console.log("gotcha");
+        this.setState({showTable:false});
+        // console.log("gotcha");
+    }
+
+    LOB = (props) => {
+        // console.log(`DB: ${props.match.params.db}, Table: ${props.match.params.table}`);
+        return (
+            <LOBDetails db={props.match.params.db} table={props.match.params.table} />
+        );
     }
 
      render() {
+         
         return (
-            <div>
-                <br/>
-                {this.renderMenu()}
-                {
-                    this.state.selectedTable !== this.state.prevSelectedTable && 
-                    <GridView database={this.state.selectedDB} 
-                    table={this.state.selectedTable}
-                    setShowTable={this.setShowTable}/>
-                }
-            </div>
+            <Router>
+                <div>
+                    <br/>
+                    {this.renderMenu()}
+                    {/* {
+                        this.state.showTable && 
+                        <GridView database={this.state.selectedDB} 
+                        table={this.state.selectedTable}
+                        setShowTable={this.setShowTable}/>
+                    } */}
+                    <Switch>
+                        <Route exact path='/grid/:db/:table' component={this.LOB}/>
+                    </Switch>
+                </div>
+            </Router>
         );
     }
 }

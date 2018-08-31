@@ -20,23 +20,14 @@ export default class SideBar extends Component {
     }
 
     componentDidMount(){
-        Axios.get("http://localhost:8080/temp.json")
+        Axios.get("http://localhost:8080/mockData/temp.json")
         .then(resp => {
             this.setState({data : resp.data});
         });
     }
 
-    loadLOBDetailsFromDB(){
-        var lobList = null;
-        return lobList;
-    }
-
     onDBClick = (db, table) => {
-        console.log('On Click');
-        
-        this.setState((prevState)=>{
-            return {selectedDB:db,selectedTable:table,showTable:true}
-        });
+        this.setState({selectedDB:db,selectedTable:table,showTable:true});
     }
 
     renderLOBList ()  {
@@ -49,8 +40,8 @@ export default class SideBar extends Component {
                 let queriesDDL = null;
                 if(db["tables"].length > 0){
                     const tables = db["tables"].map(table => {
-                        // return <Dropdown.Item key={table} onClick={() => this.onDBClick(db["name"],table)}>{table}</Dropdown.Item>
-                        return <Dropdown.Item key={table} ><Link to={`/grid/${db['name']}/${table}`}>{table}</Link></Dropdown.Item>
+                        return <Dropdown.Item key={table} onClick={() => this.onDBClick(db["name"],table)}>{table}</Dropdown.Item>
+                        // return <Dropdown.Item key={table} ><Link to={`/grid/${db['name']}/${table}`}>{table}</Link></Dropdown.Item>
                     });
                     const tableStr = `Tables (${db["tables"].length})`;
                     let keyName=`${db["name"]}table}`
@@ -72,7 +63,6 @@ export default class SideBar extends Component {
                         </Dropdown.Menu>
                     </Dropdown>
                 }
-
                 let tblQryList = <Dropdown key={db["name"]} item text={db["name"]}>
                 <Dropdown.Menu>
                     {tablesDDL}
@@ -94,36 +84,15 @@ export default class SideBar extends Component {
         );
     }
 
-    setShowTable = () => {
-        this.setState({showTable:false});
-        // console.log("gotcha");
-    }
-
-    LOB = (props) => {
-        // console.log(`DB: ${props.match.params.db}, Table: ${props.match.params.table}`);
-        return (
-            <LOBDetails db={props.match.params.db} table={props.match.params.table} />
-        );
-    }
-
      render() {
-         
         return (
-            <Router>
-                <div>
-                    <br/>
-                    {this.renderMenu()}
-                    {/* {
-                        this.state.showTable && 
-                        <GridView database={this.state.selectedDB} 
-                        table={this.state.selectedTable}
-                        setShowTable={this.setShowTable}/>
-                    } */}
-                    <Switch>
-                        <Route exact path='/grid/:db/:table' component={this.LOB}/>
-                    </Switch>
-                </div>
-            </Router>
+            <div>
+                <br/>
+                {this.renderMenu()}
+                { this.state.selectedTable && 
+                <LOBDetails selectedDB={this.state.selectedDB} selectedTable={this.state.selectedTable}/>
+                }
+            </div>
         );
     }
 }

@@ -6,7 +6,7 @@ import Home from '../pages/home';
 
 export default class Header extends Component{
     setRedirect = ()=>{
-        return <Redirect to='/'/>
+        return window.location.reload();
     }
     render(){
         return(

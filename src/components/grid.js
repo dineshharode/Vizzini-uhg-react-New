@@ -1,24 +1,28 @@
 import React, { Component } from 'react';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
+import { Loader } from 'semantic-ui-react'
 
 class GridView extends Component {
     constructor(props){
         super(props);
         this.state = {
-            databaseName: props.database,
-            tableName: props.table,
-            table:props.tableData,
-            tableHeaders:null
+            databaseName: this.props.database,
+            tableName: this.props.table,
+            table:this.props.tableData,
         }
     }
 
-    componentWillMount(){
-        const tableHeaders = Object.keys(this.state.table[0]);
+    componentDidMount(){
+        const tableHeaders = Object.keys(this.props.tableData[0]);
+        this.setState({tableHeaders:tableHeaders});
+    }
+
+    componentWillReceiveProps(nextProps){
+        const tableHeaders = Object.keys(nextProps.tableData[0]);
         this.setState({tableHeaders:tableHeaders});
     }
 
     loadTableHeaders(){
-        console.log(this.state.tableHeaders);
         let counter = 0;
         const tableHeaders = this.state.tableHeaders.map(header=>{
             const headerColumn = counter == 0 ? 
@@ -27,16 +31,24 @@ class GridView extends Component {
             counter++;
             return headerColumn;
         });
-        console.log(tableHeaders);
         return tableHeaders;
     }
 
     render() {
-        return (
-        <BootstrapTable data={ this.state.table } height='450' scrollTop={ 'Top' } >
-            {this.loadTableHeaders()}
-        </BootstrapTable>
-        );
+        if(this.state.tableHeaders)
+        {
+            return (
+            <BootstrapTable data={ this.props.tableData } height='450' scrollTop={ 'Top' } >
+                {this.loadTableHeaders()}
+            </BootstrapTable>
+            );
+        } else {
+            return (
+                <div height='450'>
+                    <Loader active inline='centered' size='large'>Loading...</Loader>
+                </div>
+            );
+        }
     }
 }
 

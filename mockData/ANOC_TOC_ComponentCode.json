@@ -1,0 +1,12 @@
+[
+    {
+      "id": 1,
+      "productType": "Default",
+      "tocdmsComponentCode": "UHEX16MP3700105_000"
+    },
+    {
+      "id": 2,
+      "productType": "PDP",
+      "tocdmsComponentCode": "UHEX16PD3700239_000"
+    }
+  ]

@@ -1,0 +1,56 @@
+[
+    {
+      "id": 1,
+      "language": "English",
+      "planType": "Default",
+      "operationHours": "<z newsize=11><f name=\"UHC Sans Light\"><leading=150>8 a.m. to 8 p.m. local time, 7 days a week"
+    },
+    {
+      "id": 2,
+      "language": "English",
+      "planType": "Sierra Spectrum/Senior Dimensions",
+      "operationHours": "<z newsize=11><f name=\"UHC Sans Light\"><leading=150>October 1 through February 14: 7 days a week, 8 a.m. to 8 p.m. local time; February 15 through September 30: Monday through Friday, 8 a.m. to 8 p.m. local time"
+    },
+    {
+      "id": 3,
+      "language": "English",
+      "planType": "OH MMP",
+      "operationHours": "<z newsize=11><f name=\"UHC Sans Light\"><leading=150>7 a.m. – 8 p.m. local time, Monday through Friday; voicemail available 24 hours a day, 7 days a week"
+    },
+    {
+      "id": 4,
+      "language": "English",
+      "planType": "TX MMP",
+      "operationHours": "<z newsize=11><f name=\"UHC Sans Light\"><leading=150>8 a.m. to 8 p.m. Central Time, Monday to Friday"
+    },
+    {
+      "id": 5,
+      "language": "Spanish",
+      "planType": "Default",
+      "operationHours": "<z newsize=11><f name=\"UHC Sans Light\"><leading=150>De 8 a.m. a 8 p.m. hora local, los 7 días de la semana"
+    },
+    {
+      "id": 6,
+      "language": "Spanish",
+      "planType": "Sierra Spectrum/Senior Dimensions",
+      "operationHours": "<z newsize=11><f name=\"UHC Sans Light\"><leading=150>Del 1 de octubre al 14 de febrero: los 7 días de la semana, de 8 a.m. a 8 p.m., hora local. Del 15 de febrero al 30 de septiembre: de lunes a viernes, de 8 a.m. a 8 p.m., hora local"
+    },
+    {
+      "id": 7,
+      "language": "Spanish",
+      "planType": "OH MMP",
+      "operationHours": "<z newsize=11><f name=\"UHC Sans Light\"><leading=150>de lunes a viernes, de 7 a.m. a 8 p.m., hora local; correo de voz disponible las 24 horas del día, los  7 días de la semana"
+    },
+    {
+      "id": 8,
+      "language": "Spanish",
+      "planType": "TX MMP",
+      "operationHours": "<z newsize=11><f name=\"UHC Sans Light\"><leading=150>de lunes a viernes, de 8 a.m. a 8 p.m., hora del Centro"
+    },
+    {
+      "id": 9,
+      "language": "Chinese",
+      "planType": "Default",
+      "operationHours": "<z newsize=11><f name=\"DFKai-SB\"><leading=150>每週7天，當地時間上午8時至晚上8時"
+    }
+  ]

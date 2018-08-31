@@ -18,7 +18,10 @@ export default class LOBDetails extends Component{
         // .then(resp => {
         //     this.setState({tableData:resp.data});
         // });
-        Axios.get("http://localhost:56564/api/Dataconnection")
+        var config = {
+            headers: {'Access-Control-Allow-Origin': '*'}
+        };
+        Axios.get("http://localhost:56564/api/Dataconnection",config)
         .then(resp => {
             this.setState({tableData:resp.data});
         });

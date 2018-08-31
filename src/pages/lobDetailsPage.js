@@ -14,7 +14,11 @@ export default class LOBDetails extends Component{
             table: props.table,
             tableData: null
         }
-        Axios.get("http://localhost:8080/tableData.json")
+        // Axios.get("http://localhost:8080/tableData.json")
+        // .then(resp => {
+        //     this.setState({tableData:resp.data});
+        // });
+        Axios.get("http://localhost:56564/api/Dataconnection")
         .then(resp => {
             this.setState({tableData:resp.data});
         });

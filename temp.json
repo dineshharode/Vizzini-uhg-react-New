@@ -5,7 +5,7 @@
       "tables": [
         "ANOC_Contact",
         "ANOC_CoverAndBackCoverText",
-        "ANOC_HoursOfOperation",
+        "ANOC_Hours_Of_Operation",
         "ANOC_Logo",
         "ANOC_TemplatesAndLogo",
         "ANOC_TOC_ComponentCode",

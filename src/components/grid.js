@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import { Loader } from 'semantic-ui-react'
+import RowDetails from './rowDetails';
 
 class GridView extends Component {
     constructor(props){
@@ -34,11 +35,39 @@ class GridView extends Component {
         return tableHeaders;
     }
 
+    isExpandableRow(row) {
+        return true;
+      }
+    
+      expandComponent(row) {
+        return (
+          <RowDetails data={ row } />
+        );
+      }
+    
+      expandColumnComponent ({isExpandableRow, isExpanded }) {
+        let content = '';
+            content = (isExpanded ? '(-)' : '(+)' );
+        return (
+          <div> { content } </div>
+        );
+      }
+
     render() {
         if(this.state.tableHeaders)
         {
+            const options = {
+                expandRowBgColor: 'rgb(255, 255, 255)'
+              };
             return (
-            <BootstrapTable data={ this.props.tableData } height='450' scrollTop={ 'Top' } >
+            <BootstrapTable data={ this.props.tableData } height='450' scrollTop={ 'Top' } 
+            pagination = {true} options = {options} expandableRow={ this.isExpandableRow }
+            expandComponent={ this.expandComponent } 
+            expandColumnOptions={ {
+              expandColumnVisible: true,
+              expandColumnComponent: this.expandColumnComponent,
+              columnWidth: 35
+            } }>
                 {this.loadTableHeaders()}
             </BootstrapTable>
             );

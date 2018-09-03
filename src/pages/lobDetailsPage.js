@@ -14,19 +14,14 @@ export default class LOBDetails extends Component{
     }
 
     componentWillReceiveProps(nextProps){
-        this.setState({database: nextProps.selectedDB, table:nextProps.selectedTable},()=>{
-            // Axios.get(`http://localhost:8080/mockData/${this.state.table}.json`)
-            // .then(resp => {
-            //     this.setState({tableData:resp.data});
-            // });
-            Axios.get(`http://localhost:56564/api/${this.state.table}`)
-            .then(resp => {
-                this.setState({tableData:resp.data});
-            });
-        });
+        this.setState({database: nextProps.selectedDB, table:nextProps.selectedTable},()=>{this.loadData()});
     }
 
     componentDidMount(){
+        this.loadData();
+    }
+
+    loadData(){
         // Axios.get(`http://localhost:8080/mockData/${this.state.table}.json`)
         // .then(resp => {
         //     this.setState({tableData:resp.data});

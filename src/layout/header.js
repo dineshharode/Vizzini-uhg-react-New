@@ -12,15 +12,15 @@ export default class Header extends Component{
         return(
             <div>
                 <Router>
-                    <div>
-                        <Menu size='tiny' style={{marginTop: '30px'}}>
-                            <Menu.Item name='Shutterfly - Vizzini'/>
-                            <MenuItem  name='home'>
+                    <div >
+                        <Menu inverted size='huge'  style={{marginTop: '30px'}} color='orange'>
+                            <Menu.Item  name='Shutterfly - Vizzini'/>
+                            <MenuItem  name='home' >
                                 <Link to='/' onClick={this.setRedirect}>Home</Link>
                             </MenuItem>
                             <Menu.Menu position='right'>
                                 <Dropdown item text='Start Page'>
-                                    <Dropdown.Menu>
+                                    <Dropdown.Menu >
                                         <Dropdown.Item>Upload</Dropdown.Item>
                                         <Dropdown.Item>Book Proof Approvals</Dropdown.Item>
                                         <Dropdown.Item>Book Proof AutoApprovals</Dropdown.Item>
@@ -29,7 +29,7 @@ export default class Header extends Component{
                                         <Dropdown.Item>WG Components Upload</Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
-                                <Menu.Item>
+                                <Menu.Item >
                                     <Button primary>Logout</Button>
                                 </Menu.Item>
                             </Menu.Menu>
